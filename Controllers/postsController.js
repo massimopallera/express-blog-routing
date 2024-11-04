@@ -22,16 +22,23 @@ const index = (req,res) => {
 
 const show = (req, res) => {
   const post = posts.find(post => post.slug === req.params.slug)
-  console.log(post);
+  // console.log(post);
   
   res.json({
     data:post
   })
 }
 
+const printByTag = (req, res) => {
+  const tag = req.params.tag
 
+  const postsWTag = posts.filter( element => element.tags.includes(tag))
+  console.log(postsWTag);
+  res.send(postsWTag)
+}
 
 module.exports ={
   index, 
-  show
+  show,
+  printByTag
 }

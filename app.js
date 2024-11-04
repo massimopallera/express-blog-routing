@@ -9,6 +9,7 @@ All'interno creare le seguenti rotte:
 
 Scrivere tutte le funzioni delle rotte nel controller dedicato
 Registrare il router dentro app.js con il prefisso posts/.
+
 Bonus
 Creare inoltre un filtro in querystring per tag, che ritorna in formato json tutti i post che hanno quei tag
 Aggiungi il metodo store per la creazione di un nuovo post */
