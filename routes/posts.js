@@ -19,7 +19,15 @@ router.get('/',(req,res) => {
   });
   markup += `</ul>`
   res.send(markup)
-    
+})
+
+router.get('/:slug', (req, res) => {
+  const post = posts.find(post => post.slug === req.params.slug)
+  console.log(post);
+  
+  res.json({
+    data:post
+  })
 })
 
 module.exports = router

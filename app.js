@@ -19,6 +19,8 @@ const app = express()
 const HOST = process.env.HOST
 const PORT = process.env.PORT
 
+app.use(express.json())
+
 app.use('/public',express.static('public'))
 
 
