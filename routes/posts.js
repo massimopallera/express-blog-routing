@@ -8,4 +8,6 @@ router.get('/:slug', postsController.show)
 
 router.get('/tag/:tag', postsController.printByTag)
 
+router.post('/create', postsController.store)
+
 module.exports = router

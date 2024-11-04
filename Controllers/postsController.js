@@ -1,5 +1,5 @@
 const posts = require('../db/posts.js')
-
+const fs = require('fs')
 
 const index = (req,res) => {
   let markup = '<ul>'
@@ -37,8 +37,23 @@ const printByTag = (req, res) => {
   res.send(postsWTag)
 }
 
+const store =(req,res) => {
+  const toStore = {
+    ...req.body
+  }
+
+  posts.push(toStore)
+  fs.writeFileSync('./db/posts.js',`module.exports=${JSON.stringify(posts,null,2)}`)
+
+  console.log(posts);
+  res.json({posts})
+  
+}
+
+
 module.exports ={
   index, 
   show,
-  printByTag
+  printByTag,
+  store
 }
