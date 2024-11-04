@@ -1,33 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const posts = require('../db/posts.js')
+const postsController = require('../Controllers/postsController.js')
 
-router.get('/',(req,res) => {
-  let markup = '<ul>'
+router.get('/', postsController.index)
 
-  posts.forEach(post => {
-
-    const {title, content, image} = post
-
-    markup += `
-    <li>
-      <h2>${title}</h2>
-      <p>${content}</p>
-      <img src="public/imgs/posts/${image}" alt="">
-    </li>
-      `
-  });
-  markup += `</ul>`
-  res.send(markup)
-})
-
-router.get('/:slug', (req, res) => {
-  const post = posts.find(post => post.slug === req.params.slug)
-  console.log(post);
-  
-  res.json({
-    data:post
-  })
-})
+router.get('/:slug', postsController.show)
 
 module.exports = router
